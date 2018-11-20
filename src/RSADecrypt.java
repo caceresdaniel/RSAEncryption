@@ -27,7 +27,7 @@ public class RSADecrypt {
 		keySplitter(key);
 		Integer[] blocks = cipherSplitter(ct);
 		String plainText = "";
-		
+
 		int count = 0;
 		for (int x : blocks) {
 			BigInteger p = BigInteger.valueOf(x).modPow(d, n);
@@ -39,36 +39,36 @@ public class RSADecrypt {
 				plainText = plainText + String.valueOf(p.intValue());
 			}
 		}
-		
+
 		plainTextFixer(plainText);
 	}
-	
+
 	public static void plainTextFixer(String plainText) throws IOException {
 		String[] pt = plainText.split(" ");
 		String numberFormat = "";
-		for(int i = 0; i < pt.length; i++) {
-			if(pt[i].length() % 2 != 0) {
+		for (int i = 0; i < pt.length; i++) {
+			if (pt[i].length() % 2 != 0) {
 				pt[i] = "0" + pt[i];
 			}
 		}
-		
-		for(String a : pt) {
+
+		for (String a : pt) {
 			numberFormat = numberFormat + a;
 		}
-		
+
 		numberConverter(numberFormat);
 	}
-	
+
 	public static void numberConverter(String pt) throws IOException {
 		String plainText = "";
 		String[] keys = pt.split("(?<=\\G..)");
-		
-		for(String a : keys) {
+
+		for (String a : keys) {
 			plainText = plainText + map.get(a);
 		}
-		
+
 		fileWriter(plainText);
-		
+
 	}
 
 	public static Integer[] cipherSplitter(String ct) {

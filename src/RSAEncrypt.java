@@ -41,7 +41,7 @@ public class RSAEncrypt {
 			}
 		}
 
-		 fileWriter(cypherText);
+		fileWriter(cypherText);
 	}
 
 	public static String[] PlainTextConverter(String pt) {
@@ -49,7 +49,7 @@ public class RSAEncrypt {
 
 		String convertedPT = "";
 		int count = 1;
-		
+
 		for (int i = 0; i < pt.length(); i++) {
 			if (map.get(String.valueOf(pt.charAt(i))) != null) {
 				if (count % 3 == 0) {
