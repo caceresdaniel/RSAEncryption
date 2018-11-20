@@ -19,15 +19,16 @@ public class RSAGenKey {
 	public static void BitKeyGen(int bits) throws IOException {
 		Random rand = new Random();
 		int p = 0;
-		do {
-			p = rand.nextInt((int) Math.pow(2, bits)) + 1;
-		} while (isPrime(p));
-
 		int q = 0;
 		do {
-			q = rand.nextInt((int) Math.pow(2, bits)) + 1;
-		} while (isPrime(q));
+			do {
+				p = rand.nextInt((int) Math.pow(2, bits)) + 1;
+			} while (isPrime(p));
 
+			do {
+				q = rand.nextInt((int) Math.pow(2, bits)) + 1;
+			} while (isPrime(q));
+		} while (p * q < 262626);
 		int n = p * q;
 		int phiN = (p - 1) * (q - 1);
 
@@ -39,7 +40,7 @@ public class RSAGenKey {
 		BigInteger ebi, pbi, d;
 		ebi = BigInteger.valueOf(e);
 		pbi = BigInteger.valueOf(phiN);
-		
+
 		d = ebi.modInverse(pbi);
 
 		PubKeyFileWriter(e, n);
@@ -49,11 +50,11 @@ public class RSAGenKey {
 	public static void KeyGen(int p, int q, int e) throws IOException {
 		int n = p * q;
 		int phiN = (p - 1) * (q - 1);
-		
+
 		BigInteger ebi, pbi, d;
 		ebi = BigInteger.valueOf(e);
 		pbi = BigInteger.valueOf(phiN);
-		
+
 		d = ebi.modInverse(pbi);
 
 		PubKeyFileWriter(e, n);
@@ -63,7 +64,7 @@ public class RSAGenKey {
 	public static void PubKeyFileWriter(int e, int n) throws IOException {
 		File file = new File("pub_key.txt");
 
-		String line1 = "e = " + e;
+		String line1 = "e = " + e + " ";
 		String line2 = "n = " + n;
 
 		FileWriter writer = new FileWriter(file);
@@ -77,7 +78,7 @@ public class RSAGenKey {
 	public static void PriKeyFileWriter(BigInteger d, int n) throws IOException {
 		File file = new File("pri_key.txt");
 
-		String line1 = "d = " + d;
+		String line1 = "d = " + d + " ";
 		String line2 = "n = " + n;
 
 		FileWriter writer = new FileWriter(file);
