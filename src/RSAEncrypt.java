@@ -41,8 +41,6 @@ public class RSAEncrypt {
 			}
 		}
 		
-		System.out.println(cypherText);
-		
 		fileWriter(cypherText);
 	}
 
@@ -65,10 +63,6 @@ public class RSAEncrypt {
 		}
 
 		String[] blocks = convertedPT.split(" ");
-		
-		for(String a : blocks) {
-			System.out.println(a);
-		}
 
 //		while (Integer.parseInt(blocks[blocks.length - 1]) % 6 != 0) {
 //			blocks[blocks.length - 1] = blocks[blocks.length - 1] + "26";
