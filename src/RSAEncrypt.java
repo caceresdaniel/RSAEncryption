@@ -40,7 +40,9 @@ public class RSAEncrypt {
 				cypherText = cypherText + String.valueOf(c.intValue());
 			}
 		}
-
+		
+		System.out.println(cypherText);
+		
 		fileWriter(cypherText);
 	}
 
@@ -63,6 +65,10 @@ public class RSAEncrypt {
 		}
 
 		String[] blocks = convertedPT.split(" ");
+		
+		for(String a : blocks) {
+			System.out.println(a);
+		}
 
 //		while (Integer.parseInt(blocks[blocks.length - 1]) % 6 != 0) {
 //			blocks[blocks.length - 1] = blocks[blocks.length - 1] + "26";
@@ -73,16 +79,16 @@ public class RSAEncrypt {
 
 	public static String stringCleaner(String s) {
 		s = s.toUpperCase();
-		s = s.replace(",", "");
-		s = s.replace(".", "");
-		s = s.replace("?", "");
-		s = s.replace("!", "");
-		s = s.replace("@", "");
-		s = s.replace("`", "");
-		s = s.replace("~", "");
-		s = s.replace("#", "");
-		s = s.replace("$", "");
-		s = s.replace("%", "");
+//		s = s.replace(",", "");
+//		s = s.replace(".", "");
+//		s = s.replace("?", "");
+//		s = s.replace("!", "");
+//		s = s.replace("@", "");
+//		s = s.replace("`", "");
+//		s = s.replace("~", "");
+//		s = s.replace("#", "");
+//		s = s.replace("$", "");
+//		s = s.replace("%", "");
 		return s;
 	}
 

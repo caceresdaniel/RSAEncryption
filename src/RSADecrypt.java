@@ -39,7 +39,7 @@ public class RSADecrypt {
 				plainText = plainText + String.valueOf(p.intValue());
 			}
 		}
-
+		
 		plainTextFixer(plainText);
 	}
 
@@ -47,11 +47,11 @@ public class RSADecrypt {
 		String[] pt = plainText.split(" ");
 		String numberFormat = "";
 		for (int i = 0; i < pt.length; i++) {
-			if (pt[i].length() % 2 != 0) {
+			while (pt[i].length() % 6 != 0) {
 				pt[i] = "0" + pt[i];
 			}
 		}
-
+		
 		for (String a : pt) {
 			numberFormat = numberFormat + a;
 		}
